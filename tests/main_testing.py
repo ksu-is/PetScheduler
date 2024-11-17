@@ -27,3 +27,15 @@ def delete_task(schedule, pet_name, task_type):
     else:
         print("No matching task found for " + pet_name + ".")
     return updated_schedule
+
+def update_task(schedule, pet_name, old_task_type, new_task_type, new_date, new_time):
+    # Update a specific task in the schedule.
+    updated = False
+    for task in schedule:
+        if task[1] == pet_name and task[3] == old_task_type:
+            task = ("pet_name", pet_name, "task_type", new_task_type, "date", new_date, "time", new_time)
+            updated = True
+            print("Task updated: " + str(task))
+    if not updated:
+        print("Task '" + old_task_type + "' for " + pet_name + " not found.")
+    return schedule
